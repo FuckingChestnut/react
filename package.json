@@ -9,6 +9,10 @@
   "keywords": [
     "react"
   ],
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
   "author": "chuan.peng",
   "license": "ISC",
   "devDependencies": {
