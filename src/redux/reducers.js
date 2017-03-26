@@ -7,5 +7,5 @@ const reducers = (state, action) => {
     default:
       return state;
   }
-}
+};
 export default reducers;

@@ -8,11 +8,11 @@ import immutable from 'immutable'
 import reducers from './redux/reducers'
 import state from './redux/state'
 import Routers from './components/Routers.js'
-import Devtools from './components/Devtools'
+import devTools from './components/Devtools'
 
 const middleWares = compose(
   applyMiddleware(promiseMiddle),
-  Devtools.instrument()
+  devTools.instrument()
 );
 const initialState = immutable.fromJS(state);
 const store = createStore(reducers, initialState, middleWares);
