@@ -1,24 +1,22 @@
 import React from 'react'
 import ReactDom from 'react-dom'
-import { createStore, applyMiddleware, compose } from 'redux'
-import promiseMiddle from 'redux-promise'
-import { Provider } from 'react-redux'
-import immutable from 'immutable'
+import {createStore, applyMiddleware, compose} from 'redux'
+import {Provider} from 'react-redux'
 
-import reducers from './redux/reducers'
-import state from './redux/state'
+import customMiddleWare from './reduxHelper/customMiddleWare'
+import reducers from './redux/reducers/'
 import Routers from './components/Routers.js'
 import devTools from './components/Devtools'
 
 const middleWares = compose(
-  applyMiddleware(promiseMiddle),
-  devTools.instrument()
+    applyMiddleware(customMiddleWare),
+    devTools.instrument()
 );
-const initialState = immutable.fromJS(state);
+const initialState = {};
 const store = createStore(reducers, initialState, middleWares);
 ReactDom.render(
-  <Provider store={store}>
-    < Routers />
-  </Provider>,
-  document.getElementById('root')
+    <Provider store={store}>
+        < Routers />
+    </Provider>,
+    document.getElementById('root')
 );
