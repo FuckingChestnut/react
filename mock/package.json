@@ -4,11 +4,12 @@
   "description": "",
   "main": "customizedServer.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodev ./mock_server.js"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "json-server": "^0.9.6"
+    "json-server": "^0.9.6",
+    "nodev": "^0.8.8"
   }
 }

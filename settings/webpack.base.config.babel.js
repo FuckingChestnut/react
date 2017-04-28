@@ -1,17 +1,23 @@
 import path from 'path'
 import webpack from 'webpack'
-import ExtractTextPlugin from 'extract-text-webpack-plugin'
+import packageConfig from '../package.json'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
+import ExtractTextPlugin from 'extract-text-webpack-plugin'
 
-console.log(__dirname)
-const config = {
+const vendorList = Object.keys(packageConfig.dependencies)
+const environment = process.env.environment
+
+console.log('------------------------', environment, '------------------------')
+
+const baseConfig = {
     entry: {
+        vendor: vendorList,
         app: ["./src/entry.js"]
     },
     output: {
-        filename: "bundle.js",
+        filename: "[name].js",
         path: path.resolve(__dirname, '../dist'),
-        publicPath: "/"
+        publicPath: "./"
     },
     resolve: {
         extensions: ['.js', '.json', '.scss'],
@@ -43,11 +49,19 @@ const config = {
                 }]
             })
         }, {
+            test: /\.css$/,
+            loaders: ['style-loader', 'css-loader', 'postcss-loader']
+        }, {
             test: /\.(png|jpg|gif)$/,
             loader: 'url-loader?limit=1000'
         }]
     },
     plugins: [
+        new webpack.DefinePlugin({
+            'process.env': {
+                environment: `'${environment}'`
+            }
+        }),
         new webpack.HotModuleReplacementPlugin(),
         new ExtractTextPlugin({
             filename: '[name].css',
@@ -58,10 +72,11 @@ const config = {
             filename: './index.html',
             template: './template.html'
         }),
-    ],
-    devServer: {
-        inline: true
-    },
-    devtool: "source-map"
+        new webpack.optimize.CommonsChunkPlugin({
+            names: ['vendor', 'app'],
+            filename: "[name].js"
+        })
+    ]
 };
-export default config
+
+export default baseConfig

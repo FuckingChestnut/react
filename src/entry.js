@@ -7,6 +7,7 @@ import customMiddleWare from './reduxHelper/customMiddleWare'
 import reducers from './redux/reducers/'
 import Routers from './components/Routers.js'
 import devTools from './components/Devtools'
+import './styles/eric-meyer-reset.css'
 
 const middleWares = compose(
     applyMiddleware(customMiddleWare),

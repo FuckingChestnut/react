@@ -1,11 +1,11 @@
 {
   "name": "react",
   "version": "1.0.0",
-  "description": "tsingtao subway",
+  "description": "just a start",
   "main": "index.js",
   "scripts": {
-    "start": "babel-node ./dev-server.js",
-    "build": "webpack --config ./setting/webpack.base.config.babel.js --progress || true",
+    "start": "environment=develop babel-node ./dev-server.js",
+    "build": "environment=production webpack --config ./settings/webpack.production.config.babel.js || true",
     "prebuild": "rm -rf dist"
   },
   "keywords": [
@@ -44,6 +44,7 @@
     "autobind-decorator": "^1.3.4",
     "fetch-jsonp": "^1.0.6",
     "immutable": "^3.8.1",
+    "query-string": "^4.3.4",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-redux": "^5.0.2",

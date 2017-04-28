@@ -1,14 +1,15 @@
 import webpack from 'webpack'
 import devServer from 'webpack-dev-server'
 
-import config from './setting/webpack.base.config'
+import config from './settings/webpack.base.config.babel'
 
 config.entry.app.unshift(
-  "webpack/hot/dev-server",
-  "webpack-dev-server/client?http://localhost:8080"
+    "webpack/hot/dev-server",
+    "webpack-dev-server/client?http://localhost:5000"
 );
 const compiler = webpack(config);
 const server = new devServer(compiler, {
-  hot: true
+    hot: true,
+    disableHostCheck: true
 });
-server.listen(8080);
+server.listen(5000);

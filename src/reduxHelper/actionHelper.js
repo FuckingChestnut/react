@@ -1,38 +1,32 @@
 import {createAction} from 'redux-actions'
 
-const fetchOption = {
-    method: 'POST'
-}
-const text = response => {
-    return response.text().then(resolve => {
-        return resolve
-    })
-}
-
-// apiOption = {
+// requestOption = {
 //     url: 'http://www.baidu.com',
-//     method: 'jsonp'
+//     method: 'get'
 // }
-export const createApiAction = (actionName, apiOption) => {
-    const payloadCreator = (...args) => {
+export const createApiAction = (actionName, requestOption) => {
+    const payloadCreator = (...parameters) => {
         return {
             INFO_TYPE: 'API',
-            INFO_OPTION: apiOption,
-            args
+            INFO_OPTION: requestOption,
+            INFO_DATA: parameters
         };
     };
-    const metaCreator = (...args) => {
-        return args;
+    const metaCreator = (...parameters) => {
+        return parameters;
     };
     return createAction(actionName, payloadCreator, metaCreator);
 };
 
-export const createNormalAction = (inputType) => {
-    const payloadCreator = (...args) => {
-
+export const createNormalAction = (actionName) => {
+    const payloadCreator = (...parameters) => {
+        return {
+            INFO_TYPE: 'NORMAL',
+            INFO_DATA: parameters
+        };
     }
-    const metaCreator = (...args) => {
-
+    const metaCreator = (...parameters) => {
+        return parameters
     }
-    createAction('alert', payloadCreator, metaCreator);
+    createAction(actionName, payloadCreator, metaCreator);
 }

@@ -1,10 +1,6 @@
-import fetchJsonp from 'fetch-jsonp'
+import fetchHelper from './fetchHelper'
 
 const isApiAction = value => value.payload.INFO_TYPE === 'API';
-const fetchJsonpOption = {
-    timeout: 5000,
-    jsonpCallback: 'callback'
-}
 
 export default ({dispatch}) => {
     return (next) => {
@@ -14,8 +10,13 @@ export default ({dispatch}) => {
             }
             const actionName = action.type
             const actionMeta = action.meta
-            const actionOption = action.payload.INFO_OPTION
-            action.payload = fetchJsonp(actionOption.url, fetchJsonpOption)
+            const {INFO_DATA, INFO_OPTION} = action.payload
+            action.payload = fetchHelper( INFO_OPTION, INFO_DATA)
+                .then(response => {
+                    // 状态码判断
+                    console.log(response)
+                    return response
+                })
                 .then(response => {
                     return response.json();
                 })
