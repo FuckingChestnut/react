@@ -2,7 +2,7 @@ import autobind from 'autobind-decorator'
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 
-import {alertAction} from 'src/redux/actions/demoActions'
+import {testAction} from 'src/redux/actions/testActions'
 import styles from './index.scss'
 
 const mapStateToProps = (state) => {
@@ -11,20 +11,20 @@ const mapStateToProps = (state) => {
     }
 }
 const mapDispatchToProps = {
-    alertAction
+    testAction
 }
 
 @connect(mapStateToProps, mapDispatchToProps)
 class App extends Component {
     @autobind
-    handleAlert() {
-        const {alertAction} = this.props
-        alertAction("this is action info.");
+    handleTest() {
+        const {testAction} = this.props
+        testAction({name: 'pengchuan'});
     }
 
     render() {
         return (
-            <h2 onClick={this.handleAlert} className={styles.red}>this is demo and the color is red.</h2>
+            <h2 onClick={this.handleTest} className={styles.red}>this is demo and the color is red.</h2>
         )
     }
 }

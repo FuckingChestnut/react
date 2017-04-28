@@ -1,5 +1,7 @@
 import queryString from 'query-string'
 
+const hostMain = 'http://localhost:3000'
+
 const mixinUrl = (inputUrl, inputObject) => {
     if (!inputObject) {
         return inputUrl
@@ -10,11 +12,11 @@ const mixinUrl = (inputUrl, inputObject) => {
 }
 
 export default (requestOption, requestData) => {
-    let tempUrl
     const {url} = requestOption
+    let tempUrl = `${hostMain}${url}`
     switch (requestOption.method) {
         case 'get':
-            tempUrl = mixinUrl(url, requestData)
+            tempUrl = mixinUrl(tempUrl, requestData)
             break
     }
     return fetch(tempUrl, requestOption)

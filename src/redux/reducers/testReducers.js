@@ -5,16 +5,16 @@ const initState = immutable.fromJS({
     name: 'pengchuan'
 });
 export default handleActions({
-    alert: (state, action) => {
-        console.log('this is alert.', action);
+    test: (state, action) => {
+        console.log('this is test:\n', action);
         return state;
     },
-    alert_SUCCESS: (state, action) => {
-        console.log('this is alert_success.', action);
+    test_SUCCESS: (state, action) => {
+        console.log('this is test_success:\n', action);
         return state;
     },
-    alert_FAIL: (state, action) => {
-        console.log('this is alert_fail.', action);
+    test_FAIL: (state, action) => {
+        console.log('this is test_fail:\n', action);
         return state;
     }
 }, initState);

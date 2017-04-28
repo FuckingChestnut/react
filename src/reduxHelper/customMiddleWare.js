@@ -11,30 +11,36 @@ export default ({dispatch}) => {
             const actionName = action.type
             const actionMeta = action.meta
             const {INFO_DATA, INFO_OPTION} = action.payload
-            action.payload = fetchHelper( INFO_OPTION, INFO_DATA)
+            action.payload = fetchHelper(INFO_OPTION, INFO_DATA)
                 .then(response => {
                     // 状态码判断
-                    console.log(response)
-                    return response
-                })
-                .then(response => {
-                    return response.json();
+                    if (response.status === 200) {
+                        return response.json()
+                    } else {
+                        dispatch({
+                            type: 'SERVICE_ERROR',
+                            payload: actionMeta,
+                            meta: actionMeta
+                        })
+                    }
                 })
                 .then(resolve => {
-                    console.info('resolve', resolve);
+                    console.info('Promise resolve:\n', resolve);
                     dispatch({
                         type: `${actionName}_SUCCESS`,
                         payload: resolve,
                         meta: actionMeta
                     })
-                })
-                .catch(error => {
-                    console.info('reject', error);
+                }, reject => {
+                    console.info('Promise reject:\n', reject);
                     dispatch({
                         type: `${actionName}_FAIL`,
-                        payload: error,
+                        payload: reject,
                         meta: actionMeta
                     })
+                })
+                .catch(error => {
+                    console.warn('Promise catch:\n', error)
                 })
             return next(action)
         }

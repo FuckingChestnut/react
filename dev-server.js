@@ -1,7 +1,7 @@
 import webpack from 'webpack'
 import devServer from 'webpack-dev-server'
 
-import config from './settings/webpack.base.config.babel'
+import config from './settings/webpack.develop.config.babel'
 
 config.entry.app.unshift(
     "webpack/hot/dev-server",
