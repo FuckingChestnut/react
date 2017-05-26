@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import lodash from 'lodash';
 import queryString from 'query-string';
 

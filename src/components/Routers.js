@@ -5,7 +5,7 @@ import { Router, Route, hashHistory } from 'react-router';
 
 import Frame from './Frame';
 import Main from '../pages/main/';
-import Login from '../pages/login/'
+import Login from '../pages/login/';
 
 const handleChange = (...args) => {
     console.log(args);
