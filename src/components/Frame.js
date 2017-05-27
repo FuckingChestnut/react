@@ -8,7 +8,10 @@ const Frame = (props) => {
     return (
         <div>
             {children}
-            <Devtools />
+            {process.env.environment === 'develop'
+                ? <Devtools />
+                : null
+            }
         </div>
     );
 };

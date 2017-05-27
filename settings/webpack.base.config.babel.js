@@ -18,6 +18,7 @@ const baseConfig = {
         filename: '[name].js',
         path: path.resolve(__dirname, '../dist'),
         publicPath: './',
+        chunkFilename: '[name].[chunkhash:5].chunk.js',
     },
     resolve: {
         extensions: ['.js', '.json', '.scss'],
