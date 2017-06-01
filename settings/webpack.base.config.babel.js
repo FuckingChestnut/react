@@ -15,10 +15,9 @@ const baseConfig = {
         app: ['./src/entry.js'],
     },
     output: {
-        filename: '[name].js',
-        path: path.resolve(__dirname, '../dist'),
         publicPath: './',
-        chunkFilename: '[name].[chunkhash:5].chunk.js',
+        chunkFilename: '[name].[chunkhash].js',
+        path: path.resolve(__dirname, '../dist'),
     },
     resolve: {
         extensions: ['.js', '.json', '.scss'],
@@ -70,27 +69,25 @@ const baseConfig = {
         }],
     },
     plugins: [
+        new HtmlWebpackPlugin({
+            inject: 'body',
+            filename: './index.html',
+            template: './template.html',
+        }),
         new webpack.DefinePlugin({
             'process.env': {
                 NODE_ENV: `'${environment}'`,
                 environment: `'${environment}'`,
             },
         }),
-        new webpack.HotModuleReplacementPlugin(),
         new ExtractTextPlugin({
             filename: '[name].css',
             allChunks: true,
             disable: false,
         }),
-        new HtmlWebpackPlugin({
-            hash: true,
-            inject: 'body',
-            filename: './index.html',
-            template: './template.html',
-        }),
+        new webpack.HashedModuleIdsPlugin(),
         new webpack.optimize.CommonsChunkPlugin({
-            names: ['vendor', 'app'],
-            filename: '[name].js',
+            names: ['vendor', 'manifest'],
         }),
     ],
     stats: { children: false },

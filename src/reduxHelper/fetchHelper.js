@@ -1,5 +1,4 @@
 /* eslint-disable no-console */
-import lodash from 'lodash';
 import queryString from 'query-string';
 
 const hostMain = 'http://localhost:3000';
@@ -14,7 +13,7 @@ const mixinUrl = (inputUrl, inputObject) => {
 };
 
 const mixinFetch = (requestOption, requestData) => {
-    const tempOption = lodash.cloneDeep(requestOption);
+    const tempOption = JSON.parse(JSON.stringify(requestOption));
     const { url } = tempOption;
     let tempUrl = `${hostMain}${url}`;
     switch (tempOption.method) {

@@ -10,6 +10,7 @@ config.entry.app.unshift(
 const compiler = webpack(config);
 const server = new devServer(compiler, {
     hot: true,
+    compress: true,
     disableHostCheck: true,
 });
 server.listen(5000);

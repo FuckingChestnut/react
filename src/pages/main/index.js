@@ -49,6 +49,7 @@ class App extends Component {
             <div className={styles.wrap}>
                 <p className={styles.introduce}>
                     this is just a demo which use redux-saga and lazy load components.
+                    something changes.
                 </p>
                 <div className={styles.content}>
                     <Table columns={columns} dataSource={tableData} />
