@@ -2,6 +2,7 @@ import path from 'path';
 import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
+import Happypack from 'happypack';
 import packageConfig from '../package.json';
 
 const vendorList = Object.keys(packageConfig.dependencies);
@@ -38,6 +39,7 @@ const baseConfig = {
                 use: [{
                     loader: 'css-loader',
                     options: {
+                        // url: false,
                         modules: true,
                         sourceMap: true,
                         localIdentName: '[path][name]__[local]--[hash:base64:5]',
@@ -88,7 +90,7 @@ const baseConfig = {
         new webpack.HashedModuleIdsPlugin(),
         new webpack.optimize.CommonsChunkPlugin({
             names: ['vendor', 'manifest'],
-        }),
+        })
     ],
     stats: { children: false },
 };

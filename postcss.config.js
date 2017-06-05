@@ -9,5 +9,10 @@ module.exports = {
             },
             discardUnused: false,
         }),
+        require('postcss-sprites')({
+            stylesheetPath: './src',
+            spritePath: './src/resource/images/',
+            retina: true,
+        })
     ],
 };

@@ -12,5 +12,19 @@
             width: 120px;
         }
     }
+    .download {
+        width: 20px;
+        height: 20px;
+        background-size: 100%;
+        background-repeat: no-repeat;
+        background-image: url("../../resources/images/download.png");
+    }
+    .star {
+        width: 20px;
+        height: 20px;
+        background-size: 100%;
+        background-repeat: no-repeat;
+        background-image: url("../../resources/images/star.png");
+    }
 
 }

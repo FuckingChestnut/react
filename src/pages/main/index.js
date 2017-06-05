@@ -47,6 +47,8 @@ class App extends Component {
     render() {
         return (
             <div className={styles.wrap}>
+                <div className={styles.download} />
+                <div className={styles.star} />
                 <p className={styles.introduce}>
                     this is just a demo which use redux-saga and lazy load components.
                     something changes.
