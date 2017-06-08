@@ -2,10 +2,16 @@
 This is a simple project which used:
 - react
 - redux
+- redux-saga
+- ant-design
 
-##### how to run this
-```
-npm install
-npm run test
-```
+# 已经优化的地方:
+- 按需加载
+- vendor文件缓存
+
+# 可以被优化的地方:
+- `whatwg-fetch`可以换成`axios`
+- 雪碧图合成没有配置完成
+- 本地依赖可以换成CDN
+- 按需加载的方法`require.ensure`可以换成`import()`
 
