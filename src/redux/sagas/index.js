@@ -19,6 +19,6 @@ function* fetchClassDetail(action) {
 export default function* sagas() {
     yield all([
         takeEvery('fetchClassList', fetchClassList),
-        takeEvery('fetchClassDetailf', fetchClassDetail),
+        takeEvery('fetchClassDetail', fetchClassDetail),
     ]);
 }
