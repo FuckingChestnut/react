@@ -2,7 +2,6 @@ import path from 'path';
 import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
-import Happypack from 'happypack';
 import packageConfig from '../package.json';
 
 const vendorList = Object.keys(packageConfig.dependencies);
