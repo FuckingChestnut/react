@@ -1,5 +1,5 @@
 # react
-This is a simple project which used:
+当前分支用了如下的依赖:
 - react
 - redux
 - redux-saga
