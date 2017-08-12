@@ -38,7 +38,7 @@ const baseConfig = {
                 use: [{
                     loader: 'css-loader',
                     options: {
-                        // url: false,
+                        url: false,
                         modules: true,
                         sourceMap: true,
                         localIdentName: '[path][name]__[local]--[hash:base64:5]',

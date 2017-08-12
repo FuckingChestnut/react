@@ -10,9 +10,13 @@ module.exports = {
             discardUnused: false,
         }),
         require('postcss-sprites')({
-            stylesheetPath: './src',
-            spritePath: './src/resource/images/',
+            basePath: './',
+            stylesheetPath: './',
+            spritePath: './dist/',
             retina: true,
+            spritesmith: {
+                padding: 5
+            }
         })
     ],
 };
